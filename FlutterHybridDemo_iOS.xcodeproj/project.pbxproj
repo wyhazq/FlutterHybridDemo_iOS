@@ -216,7 +216,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "isFlutterEnable() {\n  local flutterConfigPath=\"FlutterProject/flutter_module_demo/project.properties\"\n  if [[ ! -e $flutterConfigPath ]]; then\n    return 0\n  fi\n\n  local isEnable=$(grep -c \"FlutterEnable=true\" $flutterConfigPath)\n  if [ $isEnable -eq '1' ]; then\n    return 1\n  fi\n\n  return 0\n}\n\nisFlutterEnable\nif [ $? -eq 1 ]; then\n  \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" build\n  \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" embed\nfi\n";
+			shellScript = "isFlutterEnable() {\n  local flutterProjectName=\"flutter_module_demo\"\n  local flutterConfigPath=\"FlutterProject/$flutterProjectName/project.properties\"\n  if [[ ! -e $flutterConfigPath ]]; then\n    return 0\n  fi\n\n  local isEnable=$(grep -c \"FlutterEnable=true\" $flutterConfigPath)\n  if [ $isEnable -eq '1' ]; then\n    return 1\n  fi\n\n  return 0\n}\n\nisFlutterEnable\nif [ $? -eq 1 ]; then\n  \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" build\n  \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" embed\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

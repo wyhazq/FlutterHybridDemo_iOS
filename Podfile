@@ -5,7 +5,8 @@ use_frameworks!
 def addFlutterProject
   
   isFlutterEnable = false
-  flutter_application_path = 'FlutterProject/flutter_module_demo/'
+  flutterProjectName = 'flutter_module_demo'
+  flutter_application_path = 'FlutterProject/' + flutterProjectName + '/'
   flutterConfigPath = 'project.properties'
   if File::file?(flutter_application_path + flutterConfigPath)
     IO.foreach(flutter_application_path + flutterConfigPath) { | line |
@@ -25,9 +26,9 @@ def addFlutterProject
     puts 'Native mode'
     
     pod 'Flutter',                      :path => 'FlutterProduct/Flutter'
-    pod 'flutter_module_demo',          :path => 'FlutterProduct/flutter_module_demo'
+    pod flutterProjectName,             :path => 'FlutterProduct/' + flutterProjectName
     pod 'FlutterPluginRegistrant',      :path => 'FlutterProduct/FlutterPluginRegistrant'
-    pod 'flutter_module_demo_plugins',  :path => 'FlutterProduct/flutter_module_demo_plugins'
+    pod flutterProjectName + '_plugins',  :path => 'FlutterProduct/' + flutterProjectName + '_plugins'
 
   end
   
